@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Xiaowen Tang</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #38a6c7;
+            --light-gray: #ecf0f1;
+            --text-color: #5d6a7b;
+            --bg-color: #ffffff;
+            --sidebar-bg: #f8f9fa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e8e8e8;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .resume-container {
+            display: flex;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: var(--bg-color);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            background: var(--sidebar-bg);
+            width: 34%;
+            padding: 40px 30px;
+            color: var(--secondary-color);
+        }
+
+        .sidebar h2 {
+            color: var(--primary-color);
+            font-size: 1.4em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-top: 15px;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-info .info-item i {
+            width: 20px;
+            margin-right: 15px;
+            color: var(--accent-color);
+            font-size: 1.1em;
+        }
+
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            word-break: break-all;
+        }
+        
+        .contact-info a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .skills-section ul, .languages-section ul {
+            list-style: none;
+            padding-left: 5px;
+        }
+        
+        .skills-section h4 {
+            color: var(--primary-color);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .skills-section li, .languages-section li {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .languages-section li {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .languages-section .proficiency {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            width: 65%;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: left;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--light-gray);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 3.2em;
+            color: var(--primary-color);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .header .title {
+            font-size: 1.5em;
+            color: var(--accent-color);
+            margin: 5px 0 0 0;
+            font-weight: 400;
+        }
+
+        .main-section {
+            margin-bottom: 30px;
+        }
+
+        .main-section h2 {
+            font-size: 1.6em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+        }
+        
+        .main-section p {
+            text-align: justify;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .experience-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+        }
+        
+        .experience-item::after, .education-item::after {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 18px;
+            bottom: -10px;
+            width: 2px;
+            background-color: var(--light-gray);
+        }
+        
+        .experience-item:last-child::after, .education-item:last-child::after {
+            display: none;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .item-header h3 {
+            font-size: 1.25em;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .date {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #7f8c8d;
+            white-space: nowrap;
+        }
+
+        .item-subheader {
+            font-size: 1.05em;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        .experience-item ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .experience-item ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 850px) {
+            .resume-container {
+                flex-direction: column;
+                margin: 20px;
+            }
+            .sidebar, .main-content {
+                width: 100%;
+            }
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .date {
+                margin-top: 5px;
+            }
+        }
+        /* Print-specific Styles */
+        @media print {
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+
+            .main-section, .experience-item, .education-item {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <aside class="sidebar">
+            <section class="contact-info">
+                <h2>Contact</h2>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Berlin, Germany</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:txw0817@gmail.com">txw0817@gmail.com</a>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="http://linkedin.com/in/xiaowen-tang-133b1b152" target="_blank">xiaowen-tang-133b1b152</a>
+                </div>
+            </section>
+
+            <section class="skills-section">
+                <h2>Skills</h2>
+                <h4>Backend</h4>
+                <ul>
+                    <li>Python, FastAPI, Django</li>
+                    <li>PostgreSQL, MongoDB</li>
+                </ul>
+                <h4>ML/AI</h4>
+                <ul>
+                    <li>LangGraph, Langsmith</li>
+                    <li>VertexAI, RAG, MCP</li>
+                    <li>MLFlow, sklearn</li>
+                </ul>
+                <h4>DataOps</h4>
+                <ul>
+                    <li>Pandas, SQL, Airflow</li>
+                    <li>BigQuery, OpenTelemetry</li>
+                </ul>
+                <h4>DevOps</h4>
+                <ul>
+                    <li>GCP, Docker, CI/CD, Git</li>
+                </ul>
+            </section>
+
+            <section class="languages-section">
+                <h2>Languages</h2>
+                <ul>
+                    <li><span>Chinese</span> <span class="proficiency">Native</span></li>
+                    <li><span>English</span> <span class="proficiency">Professional</span></li>
+                    <li><span>German</span> <span class="proficiency">B1</span></li>
+                </ul>
+            </section>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h1>Xiaowen Tang</h1>
+                <p class="title">AI Engineer</p>
+            </header>
+
+            <section class="main-section">
+                <h2>Summary</h2>
+                <p>Experienced in designing and developing data pipelines, evaluation workflows, and backend services. Passionate about building impactful solutions.</p>
+            </section>
+
+            <section class="main-section">
+                <h2>Work Experience</h2>
+                <div class="experience-item">
+                    <div class="item-header">
+                        <h3>DataGuard | Berlin, Germany</h3>
+                        <span class="date">Nov 2023 - Present</span>
+                    </div>
+                    <p class="item-subheader">AI Engineer</p>
+                    <ul>
+                        <li>Developed and integrated multiple text-focused AI features into a multi-tenant platform.</li>
+                        <li>Implemented pipelines using Airflow for structured/unstructured data curation.</li>
+                        <li>Built evaluation pipelines for AI components for a confident release cycle and continuous improvement.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <div class="item-header">
+                        <h3>Una Health | Remote, Germany</h3>
+                        <span class="date">Nov 2021 - Aug 2023</span>
+                    </div>
+                    <p class="item-subheader">Backend Engineer </p>
+                    <ul>
+                        <li>Developed and maintained RESTful APIs in cloud-based microservice architectures.</li>
+                        <li>Configured and managed Prometheus and Grafana dashboards for system observability.</li>
+                    </ul>
+                    <p class="item-subheader">Data Scientist</p>
+                    <ul>
+                        <li>Applied statistical & ML modeling to analyze glycemic data.</li>
+                        <li>Automated data pipelines to power personalized healthcare.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <div class="item-header">
+                        <h3>Fraunhofer Institute IMS | Duisburg, Germany</h3>
+                         <span class="date">Nov 2020 - May 2021</span>
+                    </div>
+                    <p class="item-subheader">Master's Thesis - Computer Vision </p>
+                    <ul>
+                        <li>Designed a sensor system leveraging Convolutional Neural Networks for human motion analysis.</li>
+                        <li>Implemented a machine learning pipeline to classify different gait patterns.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="main-section">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <div class="item-header">
+                        <h3>Technische Universität Ilmenau</h3>
+                        <span class="date">2017 - 2021</span>
+                    </div>
+                    <p class="item-subheader">Master's Degree in Mechatronics and Robotics | Ilmenau, Germany</p>
+                </div>
+                <div class="education-item">
+                    <div class="item-header">
+                        <h3>Harbin Engineering University</h3>
+                        <span class="date">2012 - 2016</span>
+                    </div>
+                    <p class="item-subheader">Bachelor's Degree in Mechanical Engineering | Harbin, China</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
