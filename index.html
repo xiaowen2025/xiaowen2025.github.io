@@ -10,6 +10,20 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+        
+        .tab-btn {
+            color: #9CA3AF;
+        }
+        
+        .tab-btn:hover {
+            color: #E5E7EB;
+            background-color: #374151;
+        }
+        
+        .tab-btn.active {
+            color: #FFFFFF;
+            background-color: #4F46E5;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -19,47 +33,74 @@
         <h1 class="text-5xl font-bold mb-2">Portfolio</h1>
     </section>
 
-    <!-- Featured Project -->
-    <section class="container mx-auto px-2 py-5">
-        <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden">
-            <div class="aspect-w-9 aspect-h-16">
-                <iframe src="https://xiaowen2025.github.io/Vox-Hub/" class="w-full h-[900px] border-0"></iframe>
-            </div>
-        </div>
-    </section>
-
     <!-- Projects Section -->
     <section id="projects" class="container mx-auto px-6 py-10">
-        <h2 class="text-4xl font-bold text-center mb-12">Other Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Tab Navigation -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-gray-800 rounded-lg p-1">
+                <button class="tab-btn active px-6 py-3 rounded-md font-medium transition-all duration-300" data-tab="project1">Voice Agent</button>
+                <button class="tab-btn px-6 py-3 rounded-md font-medium transition-all duration-300" data-tab="project2">Projec Demo Generator</button>
+                <button class="tab-btn px-6 py-3 rounded-md font-medium transition-all duration-300" data-tab="project3">Project Three</button>
+            </div>
+        </div>
 
-            <!-- Project Card 1 -->
-            <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold mb-2">Project One</h3>
-                    <p class="text-gray-400 mb-4">Coming soon.</p>
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300 transition-colors duration-300">View Project &rarr;</a>
+        <!-- Tab Content -->
+        <div class="max-w-6xl mx-auto">
+            <!-- Project One Content -->
+            <div id="project1" class="tab-content bg-gray-800 rounded-lg p-8 shadow-xl">
+                <div class="bg-gray-700 rounded-lg p-4">
+                    <div class="aspect-w-9 aspect-h-16">
+                        <iframe src="https://xiaowen2025.github.io/Vox-Hub/" class="w-full h-[800px] border-0 rounded"></iframe>
+                    </div>
                 </div>
             </div>
-            <!-- Project Card 2 -->
-            <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold mb-2">Project Two</h3>
-                    <p class="text-gray-400 mb-4">Coming soon.</p>
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300 transition-colors duration-300">View Project &rarr;</a>
+
+            <!-- Project Two Content -->
+            <div id="project2" class="tab-content bg-gray-800 rounded-lg p-8 shadow-xl hidden">
+                <h3 class="text-3xl font-bold mb-4">Project Two</h3>
+                <p class="text-gray-300 text-lg mb-6">The second project focusing on backend development. Stay tuned for updates.</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm">Node.js</span>
+                    <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm">Express</span>
                 </div>
+                <a href="#" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg transition-colors duration-300">View Project &rarr;</a>
             </div>
-            <!-- Project Card 3 -->
-            <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold mb-2">Project Three</h3>
-                    <p class="text-gray-400 mb-4">Coming soon.</p>
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300 transition-colors duration-300">View Project &rarr;</a>
+
+            <!-- Project Three Content -->
+            <div id="project3" class="tab-content bg-gray-800 rounded-lg p-8 shadow-xl hidden">
+                <h3 class="text-3xl font-bold mb-4">Project Three</h3>
+                <p class="text-gray-300 text-lg mb-6">A full-stack application combining frontend and backend technologies.</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Python</span>
+                    <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Django</span>
                 </div>
+                <a href="#" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg transition-colors duration-300">View Project &rarr;</a>
             </div>
         </div>
     </section>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetTab = btn.getAttribute('data-tab');
+
+                    // Remove active class from all buttons
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    // Hide all tab contents
+                    tabContents.forEach(content => content.classList.add('hidden'));
+                    // Show target tab content
+                    document.getElementById(targetTab).classList.remove('hidden');
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
