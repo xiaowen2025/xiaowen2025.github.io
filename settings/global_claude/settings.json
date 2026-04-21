@@ -1,0 +1,10 @@
+{
+  "skipDangerousModePermissionPrompt": true,
+  "enabledPlugins": {
+    "chrome-devtools-mcp@claude-plugins-official": true
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  }
+}
